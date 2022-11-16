@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.js"></script>
+
+	<style>
+		:root {
+			--gold: #F7AB18;
+			--yellow: #F6D318;
+			--green: #A4A71A;
+			--white: #ffffff;
+			--gray: #D9D9D9;
+		}
+		@font-face {
+			font-family: "Basis";
+			src: url("assets/fonts/BasisGrotesquePro-Light.otf");
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: "Basis";
+			src: url("assets/fonts/BasisGrotesquePro-LightItalic.otf");
+			font-weight: normal;
+			font-style: italic;
+		}
+		@font-face {
+			font-family: "Miller";
+			src: url("assets/fonts/MillerText-Roman.otf");
+			font-weight: normal;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: "Miller";
+			src: url("assets/fonts/MillerText-Italic.otf");
+			font-weight: normal;
+			font-style: italic;
+		}
+		@font-face {
+			font-family: "Miller";
+			src: url("assets/fonts/MillerText-Bold.otf");
+			font-weight: bold;
+			font-style: normal;
+		}
+		@font-face {
+			font-family: "Miller";
+			src: url("assets/fonts/MillerText-BoldItalic.otf");
+			font-weight: bold;
+			font-style: italic;
+		}
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+			font-size: 20px;
+		}
+		body {
+			font-family: Basis, sans-serif;
+			background-color: var(--gold);
+		}
+		main {
+			width: 100vw;
+			height: 100vh;
+			overflow: hidden;
+			position: relative;
+		}
+		.links {
+		}
+		.links a {
+			position: absolute;
+			text-decoration: none;
+			background-color: var(--green);
+			color: var(--white);
+			padding: 20px 40px;
+			border-radius: 20px;
+			text-transform: lowercase;
+			text-align: center;
+			line-height: 0;
+			box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+		}
+		.links a:hover {
+			font-family: Miller, serif;
+			font-style: italic;
+		}
+		nav {
+			display: flex;
+			justify-content: space-between;
+			padding: 30px 80px;
+			position: absolute;
+			z-index: 9;
+			width: 100vw;
+		}
+		h1 {
+			font-weight: bold;
+			font-family: Miller, serif;
+			font-size: 28px;
+			font-style: italic;
+			color: var(--green);
+		}
+		nav div {
+			display: flex;
+			gap: 30px;
+		}
+		nav a {
+			text-decoration: none;
+			background-color: var(--green);
+			color: var(--white);
+			padding: 20px 40px;
+			border-radius: 20px;
+			text-transform: lowercase;
+			text-align: center;
+			line-height: 0;
+			border: 1px solid var(--green);
+		}
+		nav a:hover {
+			color: var(--white);
+			border: 1px solid var(--white);
+			background-color: unset;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<h1>fungal synapses</h1>
+		<div>
+			<a href="">about</a>
+			<a href="">put down roots</a>
+		</div>
+	</nav>
+	<main>
+		<div class="links">
+			<a href="">roots</a>
+			<a href="">community</a>
+			<a href="">creativity</a>
+			<a href="">geneology</a>
+			<a href="">wind</a>
+			<a href="">simultaneity</a>
+		</div>
+	</main>
+
+	<script>
+		let main = document.querySelector('main')
+		let linksContainer = document.querySelector(".links");
+		let links = [];
+		let json;
+
+		fetch('test.json')
+			.then((response) => response.json())
+			.then((json) => {
+					console.log(json);
+					let temp = "";
+					for (i=0; i<json.length; i++) {
+						let label = json[i].label;
+						let connections = json[i].connections;
+						temp += `<a href="" id="${label}" data-connections="${connections}">${label}</a>`;
+					}
+					linksContainer.innerHTML = temp;
+
+					links = document.querySelectorAll(".links a");
+
+					for (i=0; i<links.length; i++) {
+						let posX = Math.round(Math.random()*(main.clientWidth-links[i].offsetWidth));
+						let posY = Math.round(Math.random()*(main.clientHeight-links[i].offsetHeight));
+						links[i].style.left =  `${posX}px`;
+						links[i].style.top = `${posY}px`;
+					}
+				});
+
+		function setup() {
+			createCanvas(windowWidth, windowHeight);
+		}
+
+		function draw() {
+			clear();
+			stroke("#A4A71A");
+
+			for (i=0; i<links.length; i++) {
+				let posX = parseInt(links[i].style.left) + links[i].offsetWidth/2;
+				let posY = parseInt(links[i].style.top) + links[i].offsetHeight/2;
+
+				let connections = links[i].dataset.connections.split(",");
+
+				for (j=0; j<connections.length; j++) {
+					let connection = document.querySelector("#"+connections[j]);
+					let posX2 = parseInt(connection.style.left) + connection.offsetWidth/2;
+					let posY2 = parseInt(connection.style.top) + connection.offsetHeight/2;
+					line(posX, posY, posX2, posY2);
+				}
+			}
+		}
+
+
+
+	</script>
+</body>
+</html>
