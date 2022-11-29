@@ -23,6 +23,7 @@ body {
 	background-color: var(--olive);
 	color: var(--gray);
 	font-weight: 300;
+	transform: translateZ(0);
 }
 
 /* NAVBAR */
@@ -185,6 +186,7 @@ main {
 	font-weight: 500;
 	cursor: pointer;
 	border: none;
+	border: 2px solid var(--green);
 }
 .network button:hover {
 	font-variation-settings: "SRFF" 1.0, "slnt" -14.0;
@@ -206,6 +208,7 @@ main {
 .network-button-highlight {
 	background-color: var(--yellow) !important;
 	color: var(--olive) !important;
+	border: 2px solid var(--yellow) !important;
 	z-index: 999 !important;
 }
 .network canvas {
@@ -216,4 +219,10 @@ main {
 .network-hide {
 	opacity: 0;
 	pointer-events: none;
+}
+
+@media only screen and (max-width: 800px) {
+	nav {
+		padding: 20px;
+	}
 }
