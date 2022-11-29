@@ -1,0 +1,219 @@
+* {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+	font-family: "Arizona";
+}
+:root {
+	--olive: #7A6823;
+	--green: #A7A931;
+	--yellow: #F6AB18;
+	--orange: #CD5912;
+	--gray: #D9D9D9;
+	--normal: 18px;
+	--small: 14px;
+}
+@font-face {
+	font-family: "Arizona";
+	src: url("assets/fonts/ABCArizonaPlusVariable.woff2");
+	font-weight: 200 700;
+	font-variation-settings: "SRFF" 0, "slnt" 0;
+}
+body {
+	background-color: var(--olive);
+	color: var(--gray);
+	font-weight: 300;
+}
+
+/* NAVBAR */
+nav {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 40px 80px;
+	height: 10vh;
+	z-index: 99;
+	width: 100vw;
+	position: relative;
+	z-index: 99;
+}
+.nav-logo {
+	font-size: 28px;
+	font-variation-settings: "SRFF" 1.0, "slnt" -14.0;
+	color: var(--yellow);
+	font-weight: 500;
+}
+.nav-logo a {
+	text-decoration: none;
+	color: var(--yellow);
+	transition: font-variation-settings 1s;
+}
+.nav-logo a:hover {
+	font-variation-settings: "SRFF" 0, "slnt" 0;
+}
+.nav-links {
+	display: flex;
+	gap: 20px;
+	align-items: flex-end;
+	font-weight: 500;
+	font-size: var(--small);
+}
+.nav-links a {
+	color: var(--yellow);
+	border: 2px solid var(--yellow);
+	background-color: var(--olive);
+	padding: 5px 40px;
+	line-height: 1em;
+	font-variation-settings: "SRFF" 0, "slnt" 0;
+	transition: color .2s, background-color .2s;
+	text-decoration: none;
+	border-radius: 100px;
+}
+.nav-links a:hover {
+	color: white;
+	background-color: var(--yellow);
+}
+.nav-links-hide {
+	display: none;
+}
+
+/* INTRO */
+.intro {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	transition: 1s;
+	padding: 80px;
+}
+.intro-content {
+	max-width: 600px;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 48px;
+}
+.intro-welcome {
+	padding: 25px;
+	border: 2px solid var(--yellow);
+	border-radius: 10px;
+	color: var(--yellow);
+	font-variation-settings: "SRFF" 0, "slnt" 0;
+}
+.intro-welcome h1 {
+	border: 2px solid var(--yellow);
+	border-radius: 100px;
+	font-size: 48px;
+	padding: 10px 40px;
+	line-height: 1em;
+	font-weight: 500;
+}
+.intro-desc {
+	font-variation-settings: "SRFF" 0, "slnt" 0;
+	color: var(--yellow);
+	font-size: var(--normal);
+}
+.intro-quote {
+	font-size: 22px;
+	font-variation-settings: "SRFF" 1.0, "slnt" -14.0;
+	color: var(--green);
+	position: relative;
+}
+.intro-quote-credit {
+	padding-top: var(--normal);
+	position: absolute;
+	right: 0;
+	font-size: var(--normal);
+	font-variation-settings: "SRFF" 0, "slnt" 0;
+}
+.intro-quote-credit span {
+	font-variation-settings: "SRFF" 0, "slnt" -14.0;
+}
+.intro-start {
+	position: absolute;
+	bottom: 80px;
+	right: 80px;
+	border: 2px solid var(--green);
+	cursor: pointer;
+	padding: 5px 40px;
+	line-height: 1em;
+	border-radius: 100px;
+	transition: color .2s, background-color .2s;
+	font-variation-settings: "SRFF" 0, "slnt" 0;
+	background-color: var(--olive);
+	color: var(--green);
+	font-size: var(--small);
+	font-weight: 500;
+}
+.intro-start:hover {
+	background-color: var(--green);
+	color: white;
+}
+.intro-hide {
+	opacity: 0;
+	filter: blur(20px);
+	transform: scale(.9);
+	pointer-events: none;
+}
+
+
+
+main {
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+}
+.network button {
+	position: absolute;
+	text-decoration: none;
+	background-color: var(--green);
+	color: var(--white);
+	padding: 5px 40px;
+	line-height: 1em;
+	border-radius: 20px;
+	font-size: var(--small);
+	text-transform: lowercase;
+	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+	transition: 1s;
+	font-variation-settings: "SRFF" 0, "slnt" 0;
+	font-weight: 500;
+	cursor: pointer;
+	border: none;
+}
+.network button:hover {
+	font-variation-settings: "SRFF" 1.0, "slnt" -14.0;
+	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+	transform: scale(1.3);
+	font-weight: 600;
+	z-index: 999;
+}
+.network-button-wait {
+	top: 50% !important;
+	left: 50% !important;
+}
+.network-button-related {
+	background-color: var(--olive) !important;
+	color: var(--yellow) !important;
+	border: 2px solid var(--yellow) !important;
+	z-index: 99 !important;
+}
+.network-button-highlight {
+	background-color: var(--yellow) !important;
+	color: var(--olive) !important;
+	z-index: 999 !important;
+}
+.network canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.network-hide {
+	opacity: 0;
+	pointer-events: none;
+}
