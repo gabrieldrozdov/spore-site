@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Spore Site</title>
+	<link rel="icon" type="image/png" href="../assets/icons/favicon.png">
+	<link rel="stylesheet" href="../style.css">
+	<style>
+		.about-content {
+			width: 100vw;
+			height: 100vh;
+			position: absolute;
+			top: 0;
+			left: 0;
+			display: grid;
+			grid-template-columns: 45vw 55vw;
+			transition: unset;
+		}
+		.about-left {
+			background-color: var(--gray);
+			padding: 120px 80px 20px 80px;
+			color: var(--olive);
+			overflow-y: scroll;
+		}
+		.about-quote {
+			font-variation-settings: "SRFF" 1.0, "slnt" -14.0;
+			font-size: 24px;
+			font-weight: 500;
+		}
+		.about-quote-bottom {
+			display: flex;
+			align-items: flex-end;
+			justify-content: space-between;
+			font-size: 400;
+			font-variation-settings: "SRFF" 0, "slnt" 0;
+			padding-top: 40px;
+		}
+		.about-audio {
+			padding: 10px;
+			border: 2px solid var(--olive);
+			border-radius: 10px;
+			color: var(--olive);
+			font-variation-settings: "SRFF" 0, "slnt" 0;
+			cursor: pointer;
+			transition: background-color .2s, font-variation-settings .2s;
+			font-size: var(--normal);
+			line-height: 1em;
+			background-color: unset;
+			max-width: 200px;
+			width: 100%;
+		}
+		.about-audio div {
+			background-color: var(--gray);
+		}
+		.about-audio-active {
+			background-color: var(--olive) !important;
+		}
+		.about-audio-active div {
+			background-color: var(--gray) !important;
+		}
+		.about-audio div {
+			border: 2px solid var(--olive);
+			border-radius: 50px;
+			display: flex;
+			padding: 10px 10px 10px 20px;
+			align-items: center;
+			justify-content: space-between;
+			transition: background-color .2s;
+		}
+		.about-audio div img {
+			height: 24px;
+		}
+		.about-audio:hover {
+			background-color: var(--olive);
+			font-variation-settings: "SRFF" 1.0, "slnt" 0;
+		}
+		.about-left-bottom {
+			font-variation-settings: "SRFF" 0, "slnt" 0;
+			font-size: var(--small);
+			padding-top: 80px;
+		}
+		.about-left-bottom a {
+			border: 2px solid var(--olive);
+			display: inline-block;
+			padding: 5px 10px;
+			border-radius: 50px;
+			font-weight: 700;
+			transition: background-color .2s, color .2s;
+			color: var(--olive);
+			text-decoration: none;
+		}
+		.about-left-bottom a:hover {
+			color: var(--gray);
+			background-color: var(--olive);
+		}
+		.about-left-bottom div {
+			padding-top: 20px;
+			padding-left: 120px;
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+		}
+		.about-right {
+			padding: 120px 80px 20px 80px;
+			display: flex;
+			flex-direction: column;
+			gap: 40px;
+			overflow-y: scroll;
+		}
+		.about-right h1 {
+			font-variation-settings: "SRFF" 1.0, "slnt" -14.0;
+			color: var(--yellow);
+			font-size: 36px;
+			line-height: 1em;
+		}
+		.about-paragraphs {
+			display: flex;
+			flex-direction: column;
+			gap: 1em;
+			font-size: var(--small);
+			font-size: 400;
+			font-variation-settings: "SRFF" 0, "slnt" 0;
+		}
+		.about-paragraphs h2 {
+			font-size: 18px;
+			color: var(--yellow);
+		}
+		.about-right-bottom {
+			display: grid;
+			grid-template-columns: .5fr 1fr;
+		}
+		.credits {
+			align-self: flex-end;
+			color: var(--yellow);
+			font-size: var(--tiny);
+			font-variation-settings: "SRFF" 0, "slnt" 0;
+		}
+	</style>
+</head>
+<body>
+	<nav class="intro-nav">
+		<div class="nav-logo">
+			<a href="../" style="color:var(--olive);">spore site</a>
+		</div>
+		<div class="nav-links">
+			<a href=".">about</a>
+			<a href="https://docs.google.com/forms/d/e/1FAIpQLScNP8u7mGQ_Kh5ntartedr6XGemkA_OLtbnh7vToesxHELtug/viewform" target="_blank">propagate</a>
+			<a href="https://www.are.na/lc-library/spore-site" target="_blank">harvest</a>
+		</div>
+	</nav>
+	<main class="about-content">
+		<div class="about-left">
+			<div class="about-quote">
+				<p>“A forest knows things. They wire themselves up underground. There are brains down there, ones our own brains aren’t shaped to see. Root plasticity, solving problems and making decisions. Fungal synapses. What else do you want to call it? Link enough trees together, and a forest grows aware.”</p>
+			</div>
+			<div class="about-quote-bottom">
+				<p>Richard Powers<br><em>The Overstory</em></p>
+				<button class="about-audio" onclick="aboutPlay()">
+					<div>listen<img src="../assets/icons/play-alt.svg"></div>
+				</button>
+			</div>
+			<div class="about-left-bottom">
+				<a href="https://docs.google.com/forms/d/e/1FAIpQLScNP8u7mGQ_Kh5ntartedr6XGemkA_OLtbnh7vToesxHELtug/viewform" target="_blank">interested in particpating?</a>
+				<div>
+					<p>Thank you for your interest in contributing to this project. Please see below for some commonly asked questions regarding our open submission process.</p>
+					<p><strong>What does your participation require?</strong></p>
+					<p>Each participant is asked to submit a 10 second to 6 minute audio recording in the language of their choice. No professional audio equipment is required—phone recordings are welcome.</p>
+					<p>Participants are also asked to include the city from which they have recorded their message, and a keyword associated with what they have chosen to share. No names will be displayed publicly. All comments will remain anonymous.</p>
+					<p><strong>How do I submit?</strong></p>
+					<p>Follow this link to an online google form, where you’ll be asked to respond to the prompt: Share a quote, a moment, or an experience that made you feel connected.</p>
+				</div>
+			</div>
+		</div>
+		<div class="about-right">
+			<h1>About this project</h1>
+			<div class="about-paragraphs">
+				<h2>want to learn more?</h2>
+				<p>Spore Site began germinating in the Fall of 2022—after a visit to the Providence Public Library. Prompted by Aristotle’s 10-fold classification of that which exists in our environment, that which we might call “a thing,” I dove head first into the history of the Library Card Catalog. During this exploration, I confronted the uses of categorical systems, as well as the inherent bias of age-old techniques for organizing knowledge, especially those common to libraries.</p>
+				<p>Inspired by a series of collected references on mycellial networks underground, I endeavored to build a space that visitors could navigate intuitively, without the standard limitations of prescribed labels. A space that could embed learning in something sensorial. A space from which individuals could derive the least expected outcomes—a series of relationships or reference points for tending to the rhythm of everyday life.</p>
+				<p>A tall endeavor, I suppose, but one I am still very much enamored with.</p>
+				<p>You might call it root plasticity. You might respond best to fungal synapses. In any case, it’s an offering for right here and right now. An attempt at “relentless steadiness”—an endorsement “<strong>for strength drawn from commitment rather than muscle</strong>.”</p>
+			</div>
+			<div class="about-right-bottom">
+				<p class="credits">DESIGNED BY LYDIA CHODOSH<br>DEVELOPED BY GABRIEL DROZDOV</p>
+				<div class="about-paragraphs">
+					<h2>acknowledgments</h2>
+					<p>This project is a testament to the power of community, to the beauty of self-reliance and mutual support. I feel incredibly fortunate for the ways my community offered themselves up to this project. Thank you for forming the original cells of this endeavor.</p>
+					<p>Thanks especially to my friend and collaborator, Gabriel Drozdov, for helping me develop my ideas for the web. This site would not be what it is without you.</p>
+					<p>Thanks to the rest of my incredible cohort for lifting me up, for reminding me to laugh and making room for a good cry.</p>
+					<p>Thanks to my family for always listening, for teaching me the essential power of belonging to a place, of naming a place a home.</p>
+					<p>Thanks to every other individual who has touched me along the way. You showed me that we can grow something together. That we are growing. That, like water, we seek scale.</p>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<script>
+		let audio = new Audio(`../assets/info/about_quote.mp3`);
+		audio.load();
+		let playBtn = document.querySelector(".about-audio");
+		let playWait;
+		function aboutPlay() {
+			if (audio.paused == true) {
+				audio.currentTime = 0;
+				audio.play();
+				playBtn.classList.add("about-audio-active");
+				playWait = setTimeout(function () {
+					audio.pause();
+					playBtn.classList.remove("about-audio-active");
+				}, audio.duration*1000)
+			} else {
+				audio.pause();
+				playBtn.classList.remove("about-audio-active");
+				clearTimeout(playWait);
+			}
+		}
+	</script>
+</body>
+</html>

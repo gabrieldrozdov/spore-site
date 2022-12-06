@@ -384,7 +384,8 @@ function generateSubpage() {
 		subpageDigLink.style.display = "none";
 		subpageDigTag.style.display = "none";
 	} else {
-		subpageDig.style.display = "grid";
+		subpageDigLink.style.display = "grid";
+		subpageDigTag.style.display = "block";
 		subpageDigLink.href = digurl;
 		subpageDigTxt.innerHTML = digtxt;
 		subpageDigTag.innerText = digtag;

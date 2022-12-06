@@ -233,6 +233,7 @@ main {
 	position: absolute;
 	top: 0;
 	left: 0;
+	border-radius: 50px;
 	pointer-events: none;
 	z-index: -1;
 	transform: scaleX(0);
@@ -461,9 +462,6 @@ main {
 	line-height: 1em;
 	background-color: unset;
 }
-.subpage-audio:hover {
-	font-variation-settings: "SRFF" 1.0, "slnt" 0;
-}
 .subpage-audio-active {
 	background-color: var(--yellow) !important;
 }
@@ -484,6 +482,7 @@ main {
 }
 .subpage-audio:hover {
 	background-color: var(--yellow);
+	font-variation-settings: "SRFF" 1.0, "slnt" 0;
 }
 .subpage-audio:hover div {
 	background-color: var(--olive);
