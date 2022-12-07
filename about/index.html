@@ -17,10 +17,12 @@
 			display: grid;
 			grid-template-columns: 45vw 55vw;
 			transition: unset;
+			font-size: var(--normal);
+			line-height: 1.3em;
 		}
 		.about-left {
 			background-color: var(--gray);
-			padding: 120px 80px 20px 80px;
+			padding: 160px 80px 80px 80px;
 			color: var(--olive);
 			overflow-y: scroll;
 		}
@@ -28,6 +30,7 @@
 			font-variation-settings: "SRFF" 1.0, "slnt" -14.0;
 			font-size: 24px;
 			font-weight: 500;
+			line-height: 1.3em;
 		}
 		.about-quote-bottom {
 			display: flex;
@@ -78,32 +81,32 @@
 		}
 		.about-left-bottom {
 			font-variation-settings: "SRFF" 0, "slnt" 0;
-			font-size: var(--small);
+			font-size: var(--normal);
 			padding-top: 80px;
 		}
-		.about-left-bottom a {
+		.about-left-bottom > a {
 			border: 2px solid var(--olive);
 			display: inline-block;
-			padding: 5px 10px;
+			padding: 5px 40px;
+			line-height: 1em;
 			border-radius: 50px;
 			font-weight: 700;
 			transition: background-color .2s, color .2s;
 			color: var(--olive);
 			text-decoration: none;
 		}
-		.about-left-bottom a:hover {
+		.about-left-bottom > a:hover {
 			color: var(--gray);
 			background-color: var(--olive);
 		}
 		.about-left-bottom div {
 			padding-top: 20px;
-			padding-left: 120px;
 			display: flex;
 			flex-direction: column;
 			gap: 1em;
 		}
 		.about-right {
-			padding: 120px 80px 20px 80px;
+			padding: 160px 80px 80px 80px;
 			display: flex;
 			flex-direction: column;
 			gap: 40px;
@@ -119,7 +122,7 @@
 			display: flex;
 			flex-direction: column;
 			gap: 1em;
-			font-size: var(--small);
+			font-size: var(--normal);
 			font-size: 400;
 			font-variation-settings: "SRFF" 0, "slnt" 0;
 		}
@@ -130,12 +133,34 @@
 		.about-right-bottom {
 			display: grid;
 			grid-template-columns: .5fr 1fr;
+			gap: 40px;
 		}
 		.credits {
 			align-self: flex-end;
+			text-transform: uppercase;
 			color: var(--yellow);
-			font-size: var(--tiny);
+			font-size: var(--small);
 			font-variation-settings: "SRFF" 0, "slnt" 0;
+			font-weight: bolder;
+			line-height: 1.3em;
+		}
+		.about-link {
+			font-weight: bold;
+			font-variation-settings: "SRFF" 0, "slnt" 0;
+			text-decoration: underline;
+			transition: .2s;
+		}
+		.about-link:hover {
+			font-variation-settings: "SRFF" 1.0, "slnt" 0;
+		}
+		.overstory {
+			color:var(--olive);
+			font-variation-settings:'SRFF' 1.0, 'slnt' -14.0;
+			transition: .2s;
+			font-weight: bold;
+		}
+		.overstory:hover {
+			font-variation-settings:'SRFF' 0, 'slnt' -14.0;
 		}
 	</style>
 </head>
@@ -156,7 +181,7 @@
 				<p>“A forest knows things. They wire themselves up underground. There are brains down there, ones our own brains aren’t shaped to see. Root plasticity, solving problems and making decisions. Fungal synapses. What else do you want to call it? Link enough trees together, and a forest grows aware.”</p>
 			</div>
 			<div class="about-quote-bottom">
-				<p>Richard Powers<br><em>The Overstory</em></p>
+				<p>Richard Powers<br><a href="https://www.are.na/block/19298664" target="_blank" class="overstory">The Overstory</a></p>
 				<button class="about-audio" onclick="aboutPlay()">
 					<div>listen<img src="../assets/icons/play-alt.svg"></div>
 				</button>
@@ -164,12 +189,15 @@
 			<div class="about-left-bottom">
 				<a href="https://docs.google.com/forms/d/e/1FAIpQLScNP8u7mGQ_Kh5ntartedr6XGemkA_OLtbnh7vToesxHELtug/viewform" target="_blank">interested in particpating?</a>
 				<div>
+					<br>
 					<p>Thank you for your interest in contributing to this project. Please see below for some commonly asked questions regarding our open submission process.</p>
+					<br>
 					<p><strong>What does your participation require?</strong></p>
 					<p>Each participant is asked to submit a 10 second to 6 minute audio recording in the language of their choice. No professional audio equipment is required—phone recordings are welcome.</p>
 					<p>Participants are also asked to include the city from which they have recorded their message, and a keyword associated with what they have chosen to share. No names will be displayed publicly. All comments will remain anonymous.</p>
+					<br>
 					<p><strong>How do I submit?</strong></p>
-					<p>Follow this link to an online google form, where you’ll be asked to respond to the prompt: Share a quote, a moment, or an experience that made you feel connected.</p>
+					<p>Follow <a href="https://docs.google.com/forms/d/e/1FAIpQLScNP8u7mGQ_Kh5ntartedr6XGemkA_OLtbnh7vToesxHELtug/viewform" target="_blank" style="color:var(--olive);" class="about-link">this link</a> to an online google form, where you’ll be asked to respond to the prompt: <em>Share a quote, a moment, or an experience that made you feel connected.</em></p>
 				</div>
 			</div>
 		</div>
@@ -178,15 +206,18 @@
 			<div class="about-paragraphs">
 				<h2>want to learn more?</h2>
 				<p>Spore Site began germinating in the Fall of 2022—after a visit to the Providence Public Library. Prompted by Aristotle’s 10-fold classification of that which exists in our environment, that which we might call “a thing,” I dove head first into the history of the Library Card Catalog. During this exploration, I confronted the uses of categorical systems, as well as the inherent bias of age-old techniques for organizing knowledge, especially those common to libraries.</p>
-				<p>Inspired by a series of collected references on mycellial networks underground, I endeavored to build a space that visitors could navigate intuitively, without the standard limitations of prescribed labels. A space that could embed learning in something sensorial. A space from which individuals could derive the least expected outcomes—a series of relationships or reference points for tending to the rhythm of everyday life.</p>
+				<p>Inspired by a series of <a href="https://www.are.na/lc-library/sporal-research" target="_blank" class="about-link" style="color:var(--gray);">collected references</a> on mycellial networks underground, I endeavored to build a space that visitors could navigate intuitively, without the standard limitations of prescribed labels. A space that could embed learning in something sensorial. A space from which individuals could derive the least expected outcomes—a series of relationships or reference points for tending to the rhythm of everyday life.</p>
 				<p>A tall endeavor, I suppose, but one I am still very much enamored with.</p>
-				<p>You might call it root plasticity. You might respond best to fungal synapses. In any case, it’s an offering for right here and right now. An attempt at “relentless steadiness”—an endorsement “<strong>for strength drawn from commitment rather than muscle</strong>.”</p>
+				<p>You might call it root plasticity. You might respond best to fungal synapses. In any case, it’s an offering for right here and right now. An attempt at “relentless steadiness”—an endorsement “<a href="https://www.are.na/block/19245023" target="_blank" class="about-link" style="color:var(--gray)">for strength drawn from commitment rather than muscle</a>.”</p>
 			</div>
 			<div class="about-right-bottom">
-				<p class="credits">DESIGNED BY LYDIA CHODOSH<br>DEVELOPED BY GABRIEL DROZDOV</p>
+				<p class="credits">designed by lydia chodosh<br>
+					<a href="https://www.gabrieldrozdov.com/" target="_blank" style="color:var(--yellow);text-decoration:none;">developed by gabriel drozdov</a><br>
+					<a href="https://abcdinamo.com/" target="_blank" style="color:var(--yellow);text-decoration:none;">TYPESET IN ABC ARIZONA<br>
+					COURTESY OF DINAMO</a></p>
 				<div class="about-paragraphs">
 					<h2>acknowledgments</h2>
-					<p>This project is a testament to the power of community, to the beauty of self-reliance and mutual support. I feel incredibly fortunate for the ways my community offered themselves up to this project. Thank you for forming the original cells of this endeavor.</p>
+					<p>This project is a testament to the power of community, to the beauty of self-reliance and mutual support. I feel incredibly fortunate for the ways my community offered themselves up to this project. Thank you for forming the original <a href="https://docs.google.com/spreadsheets/d/11GOH7xJ4H4uIEO1uXRDVB-uklNRBIWvo_QqrnVcYMjo/edit?usp=sharing " target="_blank" class="about-link" style="color:var(--gray);">cells</a> of this endeavor.</p>
 					<p>Thanks especially to my friend and collaborator, Gabriel Drozdov, for helping me develop my ideas for the web. This site would not be what it is without you.</p>
 					<p>Thanks to the rest of my incredible cohort for lifting me up, for reminding me to laugh and making room for a good cry.</p>
 					<p>Thanks to my family for always listening, for teaching me the essential power of belonging to a place, of naming a place a home.</p>

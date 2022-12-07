@@ -138,17 +138,20 @@ function draw() {
 
 // ADJUST ON WINDOW RESIZE
 function windowResized() {
-	resizeCanvas(windowWidth, windowHeight);
-
-	// Reset positions of network links
-	for (i=0; i<networkLinks.length; i++) {
-		let posX = Math.round(Math.random()*(main.clientWidth*.9-networkLinks[i].offsetWidth)+main.clientWidth*.05);
-
-		let posY = Math.round(Math.random()*(main.clientHeight*.85-networkLinks[i].offsetHeight)+main.clientHeight*.1);
-
-		networkLinks[i].style.left =  `${posX}px`;
-		networkLinks[i].style.top = `${posY}px`;
-	}
+	setTimeout(()=>{
+		resizeCanvas(windowWidth, windowHeight);
+	
+		// Reset positions of network links
+		for (i=0; i<networkLinks.length; i++) {
+			let posX = Math.round(Math.random()*(main.clientWidth*.9-networkLinks[i].offsetWidth)+main.clientWidth*.05);
+	
+			let posY = Math.round(Math.random()*(main.clientHeight*.85-networkLinks[i].offsetHeight)+main.clientHeight*.1);
+	
+			networkLinks[i].style.left =  `${posX}px`;
+			networkLinks[i].style.top = `${posY}px`;
+		}
+	},
+	1000);
 }
 
 // HOVER EFFECT FOR NETWORK LINKS
@@ -325,8 +328,10 @@ let subpageLocation = document.querySelector("#subpage-location");
 let subpageDate = document.querySelector("#subpage-date");
 let subpageTime = document.querySelector("#subpage-time");
 let playButton = document.querySelector(".subpage-audio");
+let navLogo = document.querySelector(".nav-logo a")
 
 function generateSubpage() {
+	navLogo.style.color = "var(--olive)";
 	audio.pause();
 	navLinks.classList.remove("nav-links-hide");
 	subpage.classList.remove("subpage-hide");
@@ -350,9 +355,9 @@ function generateSubpage() {
 
 	subpageFeatured.style.backgroundImage = "url('assets/maps/" + locationImg + "')";
 	subpagePullout.innerText = pullout;
-	if (pullout.length < 60) {
+	if (pullout.length < 40) {
 		subpagePullout.style.fontSize = "48px";
-	} else if (pullout.length < 120) {
+	} else if (pullout.length < 80) {
 		subpagePullout.style.fontSize = "36px";
 	} else {
 		subpagePullout.style.fontSize = "24px";

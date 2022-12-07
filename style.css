@@ -8,7 +8,7 @@
 	--olive: #7A6823;
 	--green: #A7A931;
 	--yellow: #F6AB18;
-	--orange: #CD5912;
+	--orange: #c73d17;
 	--gray: #D9D9D9;
 	--normal: 18px;
 	--small: 14px;
@@ -20,11 +20,14 @@
 	font-weight: 200 700;
 	font-variation-settings: "SRFF" 0, "slnt" 0;
 }
+html {
+	transform: translateZ(0);
+}
 body {
 	background-color: var(--olive);
 	color: var(--gray);
 	font-weight: 300;
-	transform: translateZ(0);
+	transform: rotateZ(0);
 }
 
 /* NAVBAR */
@@ -81,18 +84,14 @@ nav {
 /* INTRO */
 .intro {
 	width: 100vw;
-	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	position: absolute;
-	top: 0;
-	left: 0;
 	transition: 1s;
-	padding: 80px;
+	padding: 40px 80px;
 }
 .intro-content {
-	max-width: 600px;
+	max-width: 650px;
 	width: 100%;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -139,9 +138,10 @@ nav {
 .intro-desc {
 	font-variation-settings: "SRFF" 0, "slnt" 0;
 	color: var(--gray);
-	font-size: var(--normal);
+	font-size: 16px;
 	display: flex;
 	flex-direction: column;
+	line-height: 1.3em;
 	gap: 1em;
 }
 .intro-start {
@@ -160,6 +160,15 @@ nav {
 .intro-start:hover {
 	background-color: var(--green);
 	color: white;
+}
+.intro-link {
+	font-weight: bold;
+	color: var(--gray);
+	transition: .2s;
+	font-variation-settings: "SRFF" 0, "slnt" 0;
+}
+.intro-link:hover {
+	font-variation-settings: "SRFF" 1.0, "slnt" 0;
 }
 .intro-hide {
 	opacity: 0;
@@ -273,7 +282,7 @@ main {
 	user-select: none;
 }
 .subpage-nav:hover {
-	background-color: var(--orange);
+	background-color: var(--yellow);
 }
 #subpage-prev {
 	left: 0;
@@ -295,18 +304,19 @@ main {
 	padding: 160px 40px 40px 80px;
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: .7fr 1fr 1fr;
+	grid-template-rows: minmax(0, .8fr) minmax(0, 1fr) minmax(0, .5fr);
 	color: white;
 	font-variation-settings: "SRFF" 0, "slnt" 0;
 }
 .subpage-definition {
 	font-weight: 600;
 	padding: 10px;
-	border: 2px solid var(--olive);
+	border: 2px solid var(--orange);
 	font-variation-settings: "SRFF" 1, "slnt" -14.0;
 	border-radius: 10px;
 	align-self: flex-start;
-	color: var(--olive);
+	color: var(--orange);
+	line-height: 1.3em;
 }
 .subpage-connections {
 	display: grid;
@@ -360,7 +370,6 @@ main {
 	background-color: var(--green);
 	transform: scaleX(0);
 	transform-origin: left;
-	opacity: .5;
 }
 .subpage-connections a p {
 	color: var(--green);
@@ -393,29 +402,29 @@ main {
 	padding: 3px;
 	font-size: var(--small);
 	border-radius: 50px;
-	color: var(--orange);
-	border: 2px solid var(--orange);
+	color: var(--olive);
+	border: 2px solid var(--olive);
 	text-align: center;
 	min-width: 150px;
 	transition: background-color .2s, color .2s;
 }
 .subpage-dig a:hover h3 {
-	background-color: var(--orange);
+	background-color: var(--olive);
 	color: white;
 }
 .subpage-dig a h4 {
 	font-variation-settings: "SRFF" 0, "slnt" -14.0;
 	text-align: left;
 	overflow-x: hidden;
-	color: var(--orange);
+	color: var(--olive);
 	font-size: var(--small);
 	padding: 3px 10px;
 	border-radius: 15px;
 	font-weight: 400;
-	border: 2px solid var(--orange);
+	border: 2px solid var(--olive);
 }
 .subpage-dig h2 {
-	color: var(--orange);
+	color: var(--olive);
 	text-align: right;
 	margin-top: -12px;
 	font-weight: 400;
@@ -424,23 +433,31 @@ main {
 }
 .subpage-featured {
 	background-color: var(--olive);
-	background-position: bottom left;
+	background-position: top 100px left;
 	background-repeat: no-repeat;
 	background-size: calc(55vw - 40px);
 }
 .subpage-right {
 	height: 100vh;
-	background-color: rgba(123, 105, 36, .5);
 	padding: 160px 80px 40px 40px;
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: minmax(0, .5fr) minmax(0, 2fr) minmax(0, .5fr);
+	grid-template-rows: minmax(0, .8fr) minmax(0, 1fr) minmax(0, .5fr);
 	color: white;
 	font-variation-settings: "SRFF" 0, "slnt" 0;
 }
 .subpage-pullout {
+	grid-column: 2/2;
 	font-size: 24px;
+	color: var(--yellow);
+	font-weight: bold;
 	font-variation-settings: "SRFF" 1.0, "slnt" -14.0;
+}
+.subpage-pullout-container {
+	display: grid;
+	grid-template-columns: .4fr 1fr;
+	gap: 80px;
+	padding-bottom: 40px;
 }
 .subpage-listen {
 	display: grid;
@@ -448,6 +465,7 @@ main {
 	gap: 80px;
 	align-items: end;
 	align-content: end;
+	margin-top: -1em;
 }
 .subpage-audio {
 	padding: 10px;
@@ -489,8 +507,8 @@ main {
 }
 .subpage-transcription {
 	overflow-y: scroll;
-	padding-top: 40px;
 	height: 100%;
+	line-height: 1.3em;
 }
 .subpage-transcription span {
 	display: block;
