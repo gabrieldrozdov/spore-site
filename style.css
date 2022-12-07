@@ -311,11 +311,11 @@ main {
 .subpage-definition {
 	font-weight: 600;
 	padding: 10px;
-	border: 2px solid var(--orange);
+	border: 2px solid var(--olive);
 	font-variation-settings: "SRFF" 1, "slnt" -14.0;
 	border-radius: 10px;
 	align-self: flex-start;
-	color: var(--orange);
+	color: var(--olive);
 	line-height: 1.3em;
 }
 .subpage-connections {
