@@ -449,7 +449,7 @@ main {
 .subpage-pullout {
 	grid-column: 2/2;
 	font-size: 24px;
-	color: var(--yellow);
+	color: var(--gray);
 	font-weight: bold;
 	font-variation-settings: "SRFF" 1.0, "slnt" -14.0;
 }
