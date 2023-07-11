@@ -10,7 +10,7 @@
 	<style>
 		.about-content {
 			width: 100vw;
-			height: 100vh;
+			height: 100dvh;
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -161,6 +161,46 @@
 		}
 		.overstory:hover {
 			font-variation-settings:'SRFF' 0, 'slnt' -14.0;
+		}
+		/* MOBILES STYLES */
+		@media only screen and (max-width: 800px) {
+			.about-content {
+				height: unset;
+				grid-template-columns: 1fr;
+				grid-template-rows: 1fr;
+			}
+			.about-left {
+				padding: 80px 20px;
+				overflow-y: auto;
+			}
+			.about-right {
+				padding: 80px 20px 40px 20px;
+				overflow-y: auto;
+			}
+			.about-right-bottom {
+				grid-template-columns: 1fr;
+			}
+			.credits {
+				order: 1;
+			}
+			.about-quote-bottom {
+				flex-direction: column;
+				align-items: stretch;
+				gap: 20px;
+			}
+			.about-audio {
+				align-self: stretch;
+				width: 100%;
+				max-width: unset;
+			}
+			.about-audio div {
+				justify-content: space-between;
+				gap: 10px;
+				width: 100%;
+			}
+			.about-left-bottom div {
+				padding-top: 0;
+			}
 		}
 	</style>
 </head>

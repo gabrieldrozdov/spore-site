@@ -1,16 +1,3 @@
-// NEW POSITION FOR CATALYZE LINK
-
-// KEEP LOGO ON ALL PAGES 
-
-// NEW LABEL AND DEFINITION FORMATTING
-
-// ADDITIONAL HARVEST LINK
-
-// VARIABLE HOVER EFFECTS FOR CONNECTIONS
-
-// HOMEPAGE NARRATION
-
-
 let main = document.querySelector('main')
 let network = document.querySelector(".network");
 let networkLinks = [];
@@ -18,8 +5,8 @@ let json, jsonStore;
 let labels = [];
 
 let subpage = document.querySelector(".subpage");
-let subpagePrev = document.querySelector("#subpage-prev span");
-let subpageNext = document.querySelector("#subpage-next span");
+let subpagePrev = document.querySelector("#subpage-prev .subpage-label");
+let subpageNext = document.querySelector("#subpage-next .subpage-label");
 let currentLabel = "";
 let index = 0;
 
@@ -37,7 +24,7 @@ fetch('data.json')
 				let label = json[i]["label"];
 				let connections = json[i]["connections"];
 				let moveDelay = Math.random()*2000 + 1000;
-				temp += `<button class="network-button-wait" style="z-index:${Math.random()*100};transition:filter ${Math.random()*2000}ms, transform .5s, top ${moveDelay}ms, left ${moveDelay}ms, font-variation-settings 1s, box-shadow .2s, font-weight 1s;" data-id="${label}" data-connections="${connections}" onclick="loadPage(this)" onmouseover="networkHighlight(this)">${label}</button>`;
+				temp += `<button class="network-button-wait" style="z-index:${Math.random()*100};transition:filter ${Math.random()*2000}ms, transform .5s, top ${moveDelay}ms, left ${moveDelay}ms, font-variation-settings 1s, box-shadow .2s, font-weight 1s;" data-id="${label}" data-connections="${connections}" onclick="loadPage(this)" onmouseover="networkHighlight(this)" ontouchstart="networkHighlight(this)">${label}</button>`;
 			}
 			network.innerHTML = temp; // Add links to DOM
 
@@ -203,17 +190,18 @@ function networkProgress() {
 // DRAG NETWORK LINKS
 function dragElement(elmnt) {
 	let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-	elmnt.onmousedown = dragMouseDown;
+	elmnt.addEventListener("mousedown", dragMouseDown);
+	elmnt.addEventListener("touchstart", dragMouseDown);
 	
 	function dragMouseDown(e) {
-		e = e || window.event;
-		e.preventDefault();
 		// get the mouse cursor position at startup:
 		pos3 = e.clientX;
 		pos4 = e.clientY;
 		document.onmouseup = closeDragElement;
+		document.ontouchend = closeDragElement;
 		// call a function whenever the cursor moves:
 		document.onmousemove = elementDrag;
+		document.ontouchmove = elementDrag;
 		elmnt.style.transition = `filter ${Math.random()*2000}ms, transform .5s, font-variation-settings 1s, box-shadow .2s, font-weight 1s, opacity `;
 		for (i=0; i<networkLinks.length; i++) {
 			if (networkLinks[i] != elmnt) {
@@ -227,13 +215,18 @@ function dragElement(elmnt) {
 	}
   
 	function elementDrag(e) {
-		e = e || window.event;
-		e.preventDefault();
+		if (e.touches != null) {
+			pos1 = pos3 - e.touches[0].clientX;
+			pos2 = pos4 - e.touches[0].clientY;
+			pos3 = e.touches[0].clientX;
+			pos4 = e.touches[0].clientY;
+		} else {
+			pos1 = pos3 - e.clientX;
+			pos2 = pos4 - e.clientY;
+			pos3 = e.clientX;
+			pos4 = e.clientY;
+		}
 		// calculate the new cursor position:
-		pos1 = pos3 - e.clientX;
-		pos2 = pos4 - e.clientY;
-		pos3 = e.clientX;
-		pos4 = e.clientY;
 		// set the element's new position:
 		elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
 		elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
@@ -242,7 +235,9 @@ function dragElement(elmnt) {
 	function closeDragElement() {
 		// stop moving when mouse button is released:
 		document.onmouseup = null;
+		document.ontouchend = null;
 		document.onmousemove = null;
+		document.ontouchmove = null;
 		let moveDelay = Math.random()*2000 + 1000;
 		elmnt.style.transition = `filter ${Math.random()*2000}ms, transform .5s, top ${moveDelay}ms, left ${moveDelay}ms, font-variation-settings 1s, box-shadow .2s, font-weight 1s`;
 		for (i=0; i<networkLinks.length; i++) {
@@ -284,6 +279,7 @@ function pagePrev() {
 	currentLabel = labels[index];
 	location.href = `#${currentLabel}`;
 	generateSubpage();
+	window.scrollTo(0,0);
 }
 function pageNext() {
 	index++;
@@ -291,6 +287,7 @@ function pageNext() {
 	currentLabel = labels[index];
 	location.href = `#${currentLabel}`;
 	generateSubpage();
+	window.scrollTo(0,0);
 }
 function generateSidebars() {
 	if (index > labels.length-1) {
