@@ -201,7 +201,7 @@ main {
 }
 .network {
 	width: 100%;
-	height: 100%;
+	height: 100dvh;
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -250,7 +250,7 @@ main {
 .network canvas {
 	position: absolute;
 	width: 100%;
-	height: 100%;
+	height: 100dvh;
 	top: 0;
 	left: 0;
 }
@@ -572,7 +572,8 @@ main {
 		padding: 10px;
 	}
 	.intro-welcome h1 {
-		font-size: var(--small);
+		font-size: var(--normal);
+		padding-left: 20px;
 	}
 	.intro-welcome img {
 		height: 20px;

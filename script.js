@@ -121,6 +121,11 @@ function draw() {
 			}
 		}
 	}
+	
+	// End loop if needed
+	if (p5active == false) {
+		remove();
+	}
 }
 
 // ADJUST ON WINDOW RESIZE
@@ -327,7 +332,11 @@ let subpageTime = document.querySelector("#subpage-time");
 let playButton = document.querySelector(".subpage-audio");
 let navLogo = document.querySelector(".nav-logo a")
 
+let p5active = true;
 function generateSubpage() {
+	// Hide canvas
+	p5active = false;
+
 	navLogo.style.color = "var(--olive)";
 	audio.pause();
 	navLinks.classList.remove("nav-links-hide");
