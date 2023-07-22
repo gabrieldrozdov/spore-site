@@ -24,7 +24,7 @@ fetch('data.json')
 				let label = json[i]["label"];
 				let connections = json[i]["connections"];
 				let moveDelay = Math.random()*2000 + 1000;
-				temp += `<button class="network-button-wait" style="z-index:${Math.random()*100};transition:filter ${Math.random()*2000}ms, transform .5s, top ${moveDelay}ms, left ${moveDelay}ms, font-variation-settings 1s, box-shadow .2s, font-weight 1s;" data-id="${label}" data-connections="${connections}" onclick="loadPage(this)" onmouseover="networkHighlight(this)" ontouchstart="networkHighlight(this)">${label}</button>`;
+				temp += `<button class="network-button-wait" style="z-index:${Math.random()*100};transition:filter ${Math.random()*2000}ms, transform .5s, top ${moveDelay}ms, left ${moveDelay}ms, font-variation-settings 1s, box-shadow .2s, font-weight 1s;" data-id="${label}" data-connections="${connections}" onclick="loadPage(this)" onmouseenter="networkHighlight(this)" ontouchstart="networkHighlight(this)">${label}</button>`;
 			}
 			network.innerHTML = temp; // Add links to DOM
 

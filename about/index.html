@@ -84,7 +84,7 @@
 			font-size: var(--normal);
 			padding-top: 80px;
 		}
-		.about-left-bottom > a {
+		.about-left-bottom-title {
 			border: 2px solid var(--olive);
 			display: inline-block;
 			padding: 5px 40px;
@@ -95,7 +95,7 @@
 			color: var(--olive);
 			text-decoration: none;
 		}
-		.about-left-bottom > a:hover {
+		.about-left-bottom-title:hover {
 			color: var(--gray);
 			background-color: var(--olive);
 		}
@@ -104,6 +104,9 @@
 			display: flex;
 			flex-direction: column;
 			gap: 1em;
+		}
+		.about-left-bottom div h3 {
+			margin-top: 40px;
 		}
 		.about-right {
 			padding: 160px 80px 80px 80px;
@@ -169,16 +172,25 @@
 				grid-template-columns: 1fr;
 				grid-template-rows: 1fr;
 			}
+			.about-quote {
+				font-size: var(--normal);
+			}
 			.about-left {
 				padding: 80px 20px;
 				overflow-y: auto;
 			}
 			.about-right {
-				padding: 80px 20px 40px 20px;
+				padding: 80px 20px 80px 20px;
 				overflow-y: auto;
+				order: -1;
 			}
 			.about-right-bottom {
 				grid-template-columns: 1fr;
+			}
+			.about-paragraphs {
+				font-size: var(--small);
+				line-height: 1.3em;
+				gap: 20px;
 			}
 			.credits {
 				order: 1;
@@ -187,6 +199,15 @@
 				flex-direction: column;
 				align-items: stretch;
 				gap: 20px;
+				padding-top: 40px;
+			}
+			.about-left-bottom {
+				padding-top: 80px;
+				gap: 20px;
+			}
+			.about-left-bottom p {
+				font-size: var(--small);
+				line-height: 1.3em;
 			}
 			.about-audio {
 				align-self: stretch;
@@ -200,6 +221,13 @@
 			}
 			.about-left-bottom div {
 				padding-top: 0;
+			}
+			.about-left-bottom div h3 {
+				margin-top: 20px;
+			}
+			.about-left-bottom-title {
+				margin-bottom: 20px;
+				padding: 5px 20px;
 			}
 		}
 	</style>
@@ -227,16 +255,13 @@
 				</button>
 			</div>
 			<div class="about-left-bottom">
-				<a href="https://docs.google.com/forms/d/e/1FAIpQLScNP8u7mGQ_Kh5ntartedr6XGemkA_OLtbnh7vToesxHELtug/viewform" target="_blank">interested in particpating?</a>
+				<a href="https://docs.google.com/forms/d/e/1FAIpQLScNP8u7mGQ_Kh5ntartedr6XGemkA_OLtbnh7vToesxHELtug/viewform" target="_blank" class="about-left-bottom-title">interested in particpating?</a>
 				<div>
-					<br>
 					<p>Thank you for your interest in contributing to this project. Please see below for some commonly asked questions regarding our open submission process.</p>
-					<br>
-					<p><strong>What does your participation require?</strong></p>
+					<h3>What does your participation require?</h3>
 					<p>Each participant is asked to submit a 10 second to 6 minute audio recording in the language of their choice. No professional audio equipment is required—phone recordings are welcome.</p>
 					<p>Participants are also asked to include the city from which they have recorded their message, and a keyword associated with what they have chosen to share. No names will be displayed publicly. All comments will remain anonymous.</p>
-					<br>
-					<p><strong>How do I submit?</strong></p>
+					<h3>How do I submit?</h3>
 					<p>Follow <a href="https://docs.google.com/forms/d/e/1FAIpQLScNP8u7mGQ_Kh5ntartedr6XGemkA_OLtbnh7vToesxHELtug/viewform" target="_blank" style="color:var(--olive);" class="about-link">this link</a> to an online google form, where you’ll be asked to respond to the prompt: <em>Share a quote, a moment, or an experience that made you feel connected.</em></p>
 				</div>
 			</div>
