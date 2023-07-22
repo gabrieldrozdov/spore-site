@@ -150,13 +150,8 @@ function windowResized() {
 let audio = new Audio();
 function networkHighlight(e) {
 	audio.pause();
-	audio = new Audio(`assets/recordings/${e.dataset.id}.mp3`);
-	audio.play();
-	networkProgress();
-
 	e.style.top = parseInt(e.style.top) + (Math.random()*20-10) + "px";
 	e.style.left = parseInt(e.style.left) + (Math.random()*20-10) + "px";
-
 	e.classList.add("network-button-highlight");
 	highlight = e.dataset.id;
 
@@ -166,6 +161,18 @@ function networkHighlight(e) {
 			e2.classList.remove("network-button-highlight");
 			e2.classList.remove("network-button-related");
 		}
+	}
+
+	if (doesFileExist(`assets/recordings/${e.dataset.id}.mp3`)) {
+		audio = new Audio(`assets/recordings/${e.dataset.id}.mp3`);
+		audio.play();
+		networkProgress();
+	} else {
+		clearInterval(progress);
+		currentTime = 0;
+		progressBar.style.opacity = "0";
+		progressBar.style.transition = "0s linear";
+		progressBar.style.transform = "scaleX(0)";
 	}
 }
 
@@ -199,6 +206,7 @@ function dragElement(elmnt) {
 	elmnt.addEventListener("touchstart", dragMouseDown);
 	
 	function dragMouseDown(e) {
+		e.preventDefault();
 		// get the mouse cursor position at startup:
 		pos3 = e.clientX;
 		pos4 = e.clientY;
@@ -405,7 +413,29 @@ function generateSubpage() {
 	setTimeout(function () {
 		subpageConnections.style.pointerEvents = "unset";
 	}, 500)
+
+	// Show or hide audio button if audio exists
+	if (doesFileExist(`assets/recordings/${currentLabel}.mp3`)) {
+		playButton.style.visibility = "visible";
+	} else {
+		playButton.style.visibility = "hidden";
+	}
 }
+
+// CHECK IF FILE EXISTS
+function doesFileExist(urlToFile) {
+	var xhr = new XMLHttpRequest();
+	xhr.open('HEAD', urlToFile, false);
+	xhr.send();
+	if (xhr.readyState == 4 && xhr.status == 404 ) {
+		console.log("File doesn't exist");
+		return false;
+	} else {
+		console.log("File exists");
+		return true;
+	}
+}
+
 
 // CONNECTION AUDIO SNIPPETS
 let connectionProgress;
@@ -420,18 +450,20 @@ function connectionPreview(connectionLabel, e) {
 		connectionProgress.style.transform = "scaleX(0)";
 	}
 	audio.pause();
-	audio = new Audio(`assets/recordings/${connectionLabel}.mp3`);
-	audio.play();
-	connectionProgress = e.querySelector(".connection-progress");
-	setTimeout(function() {
-		connectionProgress.style.transition = `10s linear`;
-		connectionProgress.style.transform = "scaleX(1)";
-	}, 1);
-	playDuration = setTimeout(function() {
-		audio.pause();
-		connectionProgress.style.transition = "0s";
-		connectionProgress.style.transform = "scaleX(0)";
-	}, 10000);
+	if (doesFileExist(`assets/recordings/${connectionLabel}.mp3`)) {
+		audio = new Audio(`assets/recordings/${connectionLabel}.mp3`);
+		audio.play();
+		connectionProgress = e.querySelector(".connection-progress");
+		setTimeout(function() {
+			connectionProgress.style.transition = `10s linear`;
+			connectionProgress.style.transform = "scaleX(1)";
+		}, 1);
+		playDuration = setTimeout(function() {
+			audio.pause();
+			connectionProgress.style.transition = "0s";
+			connectionProgress.style.transform = "scaleX(0)";
+		}, 10000);
+	}
 }
 
 // MAIN PLAY BUTTON

@@ -202,9 +202,18 @@ main {
 .network {
 	width: 100%;
 	height: 100dvh;
-	position: absolute;
+	position: fixed;
+	overflow: hidden;
 	top: 0;
 	left: 0;
+}
+canvas {
+	position: fixed;
+	width: 100%;
+	height: 100dvh;
+	top: 0;
+	left: 0;
+	z-index: -1;
 }
 .network button {
 	position: absolute;
@@ -246,14 +255,6 @@ main {
 	color: var(--olive) !important;
 	border: 2px solid var(--yellow) !important;
 	z-index: 999 !important;
-}
-main canvas {
-	position: absolute;
-	width: 100%;
-	height: 100dvh;
-	top: 0;
-	left: 0;
-	z-index: -1;
 }
 .network-hide {
 	opacity: 0;
