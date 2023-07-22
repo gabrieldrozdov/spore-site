@@ -150,8 +150,19 @@ function windowResized() {
 let audio = new Audio();
 function networkHighlight(e) {
 	audio.pause();
-	e.style.top = parseInt(e.style.top) + (Math.random()*20-10) + "px";
-	e.style.left = parseInt(e.style.left) + (Math.random()*20-10) + "px";
+
+	// Nudge on desktop
+	if (window.innerWidth > 800) {
+		e.style.top = parseInt(e.style.top) + (Math.random()*20-10) + "px";
+		e.style.left = parseInt(e.style.left) + (Math.random()*20-10) + "px";
+	}
+
+	// Activate story details on mobile if clicked twice
+	if (window.innerWidth <= 800 && highlight == e.dataset.id) {
+		loadPage(e);
+		return
+	}
+
 	e.classList.add("network-button-highlight");
 	highlight = e.dataset.id;
 
@@ -224,7 +235,7 @@ function dragElement(elmnt) {
 		// this keeps the element clickable
 		setTimeout(() => {
 			elmnt.style.pointerEvents = "none";
-		}, 200);
+		}, 500);
 	}
   
 	function elementDrag(e) {
@@ -268,7 +279,9 @@ function dragElement(elmnt) {
 // LOAD SUBPAGE FOR INDIVIDUAL NETWORK LINK AFTER CLICK
 function loadPage(label) {
 	location.href = `#${label.dataset.id}`;
-	audio.pause();
+	if (!audio.paused) {
+		audio.pause();
+	}
 	clearInterval(progress);
 	currentTime = 0;
 	progressBar.style.opacity = "0";
@@ -428,10 +441,8 @@ function doesFileExist(urlToFile) {
 	xhr.open('HEAD', urlToFile, false);
 	xhr.send();
 	if (xhr.readyState == 4 && xhr.status == 404 ) {
-		console.log("File doesn't exist");
 		return false;
 	} else {
-		console.log("File exists");
 		return true;
 	}
 }
